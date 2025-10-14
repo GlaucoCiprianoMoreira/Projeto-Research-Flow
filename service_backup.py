@@ -15,16 +15,6 @@ load_dotenv()
 # Configura a API do Google com a chave que está no .env
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-# Modelo Gemini padrão (pode ser sobrescrito por variável de ambiente GEMINI_MODEL)
-# Model name constants for convenience
-GEMINI_FLASH_2_0 = "gemini-2.0-flash"
-GEMINI_FLASH_2_5 = "gemini-2.5-flash"
-GEMINI_PRO_2_0 = "gemini-2.0-pro"
-GEMINI_PRO_2_5 = "gemini-2.5-pro"
-
-# Default model (can be overridden by environment variable GEMINI_MODEL)
-MODEL_NAME = os.getenv("GEMINI_MODEL", GEMINI_PRO_2_5)
-
 def extract_keywords_with_gemini(natural_language_query: str) -> str:
     """
     Usa a IA do Gemini para extrair os termos de busca de uma frase.
@@ -199,9 +189,9 @@ def summarize_article_with_gemini(article_text: str) -> dict:
 
     Regras estritas:
     - Retorne APENAS um objeto JSON válido (Com explicações, mais textos adicionais).
-    - Mantenha a linguagem em português e seja objetivo.
+    - Mantenha a linguagem em português e seja didático.
     - Faça uma explicação completa e clara para cada seção.
-    - Traga também detalhes específicos do artigo, como nomes de métodos, métricas e resultados numéricos.
+
 
     Artigo (trecho ou texto completo):
     """
@@ -212,98 +202,48 @@ def summarize_article_with_gemini(article_text: str) -> dict:
 
     full_prompt = f"{prompt}\n{safe_text}\n\nSua saída:" 
 
-    def extract_first_json(text: str) -> Optional[str]:
-        """Tenta extrair o primeiro objeto JSON equilibrado do texto.
-        Faz um parse simples considerando strings para pular chaves dentro de textos.
-        Retorna a substring JSON ou None.
-        """
-        start = text.find('{')
-        if start == -1:
-            return None
-        depth = 0
-        in_str = False
-        escape = False
-        for i in range(start, len(text)):
-            ch = text[i]
-            if escape:
-                escape = False
-                continue
-            if ch == '\\':
-                escape = True
-                continue
-            if ch == '"':
-                in_str = not in_str
-                continue
-            if in_str:
-                continue
-            if ch == '{':
-                depth += 1
-            elif ch == '}':
-                depth -= 1
-                if depth == 0:
-                    return text[start:i+1]
-        return None
-
     try:
-        model = genai.GenerativeModel(MODEL_NAME)
+        model = genai.GenerativeModel('gemini-2.0-flash')
 
         # Helper para chamar o modelo; configuramos temperature=0 para respostas determinísticas
-        # Few-shot examples to teach the exact JSON schema and encourage length
-        few_shot = """
-EXEMPLO 1:
-Entrada: Trecho curto de um artigo sobre X.
-Saída:
-{"problem": "... (2-4 sentenças)", "methodology": "... (2-4 sentenças)", "results": "... (2-4 sentenças)", "conclusion": "... (2-4 sentenças)"}
-
-EXEMPLO 2:
-Entrada: Trecho curto de um artigo sobre Y.
-Saída:
-{"problem": "... (2-4 sentenças)", "methodology": "... (2-4 sentenças)", "results": "... (2-4 sentenças)", "conclusion": "... (2-4 sentenças)"}
-"""
-
         def call_model(prompt_text: str):
             try:
-                # prefer explicit params; some SDKs accept them, others may ignore
-                return model.generate_content(prompt_text, temperature=0, max_output_tokens=4096).text
+                return model.generate_content(prompt_text, temperature=0, max_output_tokens=1500).text
             except TypeError:
+                # fallback se a assinatura não aceitar os kwargs
                 return model.generate_content(prompt_text).text
 
         raw_response = None
         data = None
-        # Tentativas: primeira solicitação, depois até 2 re-prompts estritos se necessário
-        max_attempts = 3
-        for attempt in range(max_attempts):
-            prompt_to_send = full_prompt if attempt == 0 else (
+        # Tentativas: primeira solicitação, depois re-prompt estrito se necessário
+        for attempt in range(2):
+            raw_response = call_model(full_prompt if attempt == 0 else (
                 "Você não retornou um JSON válido. Responda APENAS com um objeto JSON válido contendo as chaves: \"problem\", \"methodology\", \"results\", \"conclusion\". "
-                "Cada campo deve ter 2-6 sentenças. Não inclua texto adicional. Apenas o objeto JSON.\n\n" + full_prompt
-            )
-            # prepend few-shot examples on the first attempt to guide format and length
-            if attempt == 0:
-                prompt_to_send = few_shot + "\n\n" + prompt_to_send
-
-            raw_response = call_model(prompt_to_send)
+                "Não inclua nenhum texto adicional nem explicações. Apenas o objeto JSON.\n\n" + full_prompt
+            ))
 
             cleaned = raw_response.strip()
-            print(f"[DEBUG] Gemini raw response (attempt {attempt+1}):\n{cleaned[:1500]}")
+            print(f"[DEBUG] Gemini raw response (attempt {attempt+1}):\n{cleaned[:1000]}")
 
-            # Normalize typical code fences
+            # Remove blocos de código se houver
             cleaned_json_candidate = cleaned.replace('```json', '').replace('```', '').strip()
 
-            # 1) Try direct load
             try:
                 data = json.loads(cleaned_json_candidate)
                 break
             except json.JSONDecodeError:
-                # 2) Try to extract the first balanced JSON object
+                # Try to salvage a JSON object substring from the response
                 try:
-                    candidate = extract_first_json(cleaned_json_candidate)
-                    if candidate:
+                    start = cleaned.find('{')
+                    end = cleaned.rfind('}')
+                    if start != -1 and end != -1 and end > start:
+                        candidate = cleaned[start:end+1]
                         data = json.loads(candidate)
                         break
                 except Exception:
                     data = None
-                # continue to next attempt
-                continue
+                    # continue to next attempt
+                    continue
 
         if not data:
             # Fornecemos parte da resposta bruta para debug (truncada)
@@ -327,5 +267,3 @@ Saída:
     except Exception as e:
         print(f"Erro ao chamar Gemini para resumir: {e}")
         return {"error": "Falha ao gerar resumo com a IA."}
-    
-
