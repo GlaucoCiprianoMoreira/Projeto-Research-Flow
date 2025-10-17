@@ -104,7 +104,7 @@ def fetch_pdf_text_from_url(url: str) -> Optional[str]:
                 pass
 
 
-def summarize_article_with_gemini(article_text: str) -> dict:
+def summarize_article_with_gemini(article_text: str, natural_language_query: Optional[str] = None) -> dict:
     """
     Envia o texto do artigo para o Gemini e pede um resumo estruturado.
 
@@ -115,21 +115,67 @@ def summarize_article_with_gemini(article_text: str) -> dict:
     prompt = f"""
     Você é um assistente que resume artigos acadêmicos. Sua tarefa é produzir
     um objeto JSON com as seguintes chaves obrigatórias: "problem", "methodology",
-    "results", "conclusion". Cada valor deve ser um texto sucinto (1-4 sentenças).
+    "results", "conclusion". Cada chave deve conter um resumo detalhado sobre o artigo fornecido.
 
     Regras estritas:
     - Retorne APENAS um objeto JSON válido (Com explicações, mais textos adicionais).
     - Mantenha a linguagem em português e seja objetivo.
     - Faça uma explicação completa e clara para cada seção.
     - Traga também detalhes específicos do artigo, como nomes de métodos, métricas e resultados numéricos.
+    - Deve ser feito em português.
 
+    Exemplo de casos de uso:
+        **Consulta usuário:** "Resuma o artigo "Attention is all you need" com detalhes técnicos."
+        **Sua saída: {
+                        "problem": {
+                            "description": "Descreve qual é o problema central abordado pelo artigo e sua relevância dentro do campo de estudo.",
+                            "context": "Apresenta o cenário teórico ou prático em que o problema se insere, incluindo limitações ou lacunas de pesquisas anteriores.",
+                            "objective": "Explica o principal objetivo ou motivação do trabalho — o que os autores buscam resolver ou melhorar."
+                        },
+                        "methodology": {
+                            "approach": "Resumo do método, modelo ou técnica proposta para resolver o problema.",
+                            "components": "Principais elementos ou etapas da metodologia, como arquitetura, algoritmos, experimentos ou procedimentos analíticos.",
+                            "data_or_tools": "Informações sobre conjuntos de dados, ferramentas, frameworks ou tecnologias utilizadas.",
+                            "complexity_or_efficiency": "Discussão sobre desempenho, custo computacional ou vantagens em relação a métodos anteriores."
+                        },
+                        "results": {
+                            "datasets_or_experiments": "Descrição dos experimentos realizados ou dados analisados.",
+                            "performance_or_findings": "Principais resultados quantitativos e qualitativos, métricas usadas e comparações com abordagens existentes.",
+                            "interpretation": "Análise dos resultados e o que eles indicam em relação ao problema proposto."
+                        },
+                        "conclusion": {
+                            "summary": "Síntese geral das descobertas e contribuições do artigo.",
+                            "implications": "Impactos teóricos, práticos ou futuros da pesquisa.",
+                            "limitations_or_future_work": "Limitações identificadas e direções sugeridas para trabalhos futuros."
+                        }
+                    }
+
+    Processe a seguinte entrada do usuário:
+    **Consulta do Usuário:** "{natural_language_query}"
+    **Sua Saída:**
     Artigo (trecho ou texto completo):
     """
-    safe_text = article_text[:12000]
+    safe_text = article_text
     full_prompt = f"{prompt}\n{safe_text}\n\nSua saída:"
     model = genai.GenerativeModel(MODEL_NAME)
-    few_shot = '{"problem": "(2-4 sent.)", "methodology": "(2-4 sent.)", "results": "(2-4 sent.)", "conclusion": "(2-4 sent.)"}\n'
+    # Few-shot (2 exemplos) em português. Cada Saída é APENAS um objeto JSON válido.
+    few_shot = """
+    Entrada: ""Rede neural convolucional leve para classificação de imagens; testes em CIFAR-10 atingiram 92 porcento de acurácia com menor custo computacional.""
+    Saída:
+    {"problem": "Necessidade de classificar imagens com eficiência computacional.", "methodology": "Arquitetura CNN leve otimizada para reduzir parâmetros.", "results": "Acurácia de 92% em CIFAR-10 com redução de parâmetros.", "conclusion": "Bom trade-off entre desempenho e custo computacional."}
+
+    Geral:
+    Entrada: "artigo + consulta do usuário"
+    Saída:
+    {"problem": "...", 
+     "methodology": "...", 
+     "results": "...", 
+     "conclusion": "..."}
+    """
+
+    # Envia few-shot + prompt
     raw = call_model(model, few_shot + "\n" + full_prompt)
+    raw = call_model(model, full_prompt)
     cleaned = (raw or '').replace('```json', '').replace('```', '').strip()
     try:
         data = json.loads(cleaned)
@@ -149,4 +195,22 @@ def summarize_article_with_gemini(article_text: str) -> dict:
         'conclusion': (data.get('conclusion') or '').strip(),
     }
     
+
+def summarize_article(input_value: str, is_url: bool = False) -> dict:
+    """Wrapper used by views: accepts either raw text or a URL.
+    If is_url is True, attempts to download and extract the PDF text first.
+    Returns the same dict shape as summarize_article_with_gemini or an error dict.
+    """
+    if is_url:
+        text = fetch_pdf_text_from_url(input_value)
+        if not text:
+            return {"error": "Falha ao baixar/ler o PDF.", "details": "Não foi possível obter texto a partir da URL fornecida."}
+    else:
+        text = input_value or ''
+
+    if not text.strip():
+        return {"error": "Texto vazio para resumir."}
+
+    return summarize_article_with_gemini(text)
+
 
