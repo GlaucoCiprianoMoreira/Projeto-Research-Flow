@@ -37,30 +37,18 @@ def search_articles_view(request):
 
     return Response(articles)
 
-
-@api_view(['POST'])
-def analyze_article_view(request):
+def summarize_article(request):
     """
-    Endpoint para analisar/resumir um artigo.
-
-    Aceita JSON com uma das chaves:
-    - 'text': o texto do artigo ou trecho
-    - 'url': link para um PDF
-
-    Exemplo: {"text": "conteúdo..."} ou {"url": "https://.../paper.pdf"}
+    Recebe o texto de um artigo e retorna um resumo estruturado gerado pela IA.
     """
-    text = request.data.get('text')
-    url = request.data.get('url')
+    # 1. Pega o texto do artigo enviado pelo front-end
+    article_text = request.data.get('text', '')
+    if not article_text:
+        return Response({"error": "Texto do artigo não fornecido."}, status=400)
 
-    if not text and not url:
-        return Response({"error": "Forneça 'text' ou 'url' no corpo da requisição."}, status=400)
-
-    is_url = bool(url and not text)
-    input_value = url if is_url else text
-
-    result = summarize_article(input_value, is_url=is_url)
+    # 2. Chama a função summarize_article do módulo de serviços
+    result = summarize_article(article_text, is_url=False)
     if result.get('error'):
-        # se tiver detalhes, devolve 422 com detalhes
         status_code = 422 if result.get('details') else 500
         return Response(result, status=status_code)
 
