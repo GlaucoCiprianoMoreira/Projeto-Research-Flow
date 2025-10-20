@@ -13,36 +13,39 @@ load_dotenv(dotenv_path=env_path)
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def extract_keywords_with_gemini(natural_language_query: str) -> str:
-    """
-    Usa a IA do Gemini para converter a consulta do usuário nos melhores
-    termos de busca em inglês para uma API acadêmica.
-    """
     prompt = f"""
-    Você é um assistente de pesquisa especialista em otimizar buscas para bases de dados acadêmicas (como Semantic Scholar). Sua única tarefa é converter a consulta do usuário, que pode estar em português, nos melhores e mais eficazes termos de busca em inglês.
+    Você é um assistente de pesquisa especialista em otimizar buscas para o Semantic Scholar. Sua única tarefa é converter a consulta do usuário nos melhores e mais eficazes termos de busca.
 
     Siga estas regras estritamente:
-    1.  **Traduza e Otimize:** Identifique os conceitos principais e traduza-os para o inglês técnico e acadêmico. Adicione termos relacionados se isso enriquecer a busca.
-    2.  **Seja Conciso:** Remova todas as palavras de preenchimento (artigos, preposições, etc.).
-    3.  **Formato de Saída Obrigatório:** A sua resposta DEVE SER um objeto JSON válido contendo uma única chave chamada "keywords". O valor será a string com as palavras-chave em inglês, prontas para a busca.
+    1.  **Identifique os Conceitos Principais:** Isole os substantivos e termos técnicos da consulta.
+    2.  **Expanda (Português + Inglês):** Para cada conceito principal, inclua o termo original em português E seu equivalente técnico em inglês.
+    3.  **Detecte Filtros Específicos:**
+        * **Idioma:** Se o usuário especificar um idioma (ex: "em português", "em inglês", "em alemão"), adicione o filtro de idioma do Semantic Scholar (`language:pt`, `language:en`, `language:de`, etc.) à string de busca.
+        * **Autor:** Se o usuário mencionar um autor (ex: "do Alan Turing"), adicione o filtro de autor (`author:"Nome do Autor"`).
+    4.  **Combine Tudo:** Junte os termos expandidos (PT+EN) e os filtros em uma única string de busca.
+    5.  **Formato JSON Obrigatório:** A sua resposta DEVE SER um objeto JSON válido contendo uma única chave chamada "keywords".
 
     Exemplos:
     -   **Consulta do Usuário:** "inteligencia artificial no futebol"
-    -   **Sua Saída:** {{"keywords": "artificial intelligence soccer player performance analysis"}}
+    -   **Sua Saída:** {{"keywords": "inteligencia artificial IA artificial intelligence futebol soccer football"}}
 
-    -   **Consulta do Usuário:** "impacto das redes sociais na saúde mental dos jovens"
-    -   **Sua Saída:** {{"keywords": "social media impact mental health teenagers adolescents"}}
+    -   **Consulta do Usuário:** "inteligencia artificial no futebol EM PORTUGUÊS"
+    -   **Sua Saída:** {{"keywords": "inteligencia artificial IA artificial intelligence futebol soccer football language:pt"}}
+
+    -   **Consulta do Usuário:** "artigos do Alan Turing sobre computação em inglês"
+    -   **Sua Saída:** {{"keywords": "computação computation author:\"Alan Turing\" language:en"}}
 
     Processe a seguinte consulta do usuário:
     **Consulta do Usuário:** "{natural_language_query}"
     **Sua Saída:**
     """
     try:
-        model = genai.GenerativeModel('gemini-2.0-flash')
+        model = genai.GenerativeModel('gemini-2.5-flash') 
         response = model.generate_content(prompt)
         cleaned_text = response.text.strip().replace('```json', '').replace('```', '')
         data = json.loads(cleaned_text)
         keywords = data['keywords']
-        print(f"Termos de busca otimizados pelo Gemini: '{keywords}'")
+        print(f"Termos de busca AVANÇADOS (PT+EN+Filtros) otimizados pelo Gemini: '{keywords}'")
         return keywords
     except (json.JSONDecodeError, KeyError, Exception) as e:
         print(f"Erro ao processar resposta do Gemini: {e}. Usando fallback.")

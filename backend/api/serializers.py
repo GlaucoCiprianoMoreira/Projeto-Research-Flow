@@ -23,3 +23,12 @@ class ArticleSerializer(serializers.Serializer):
     abstract = serializers.CharField(allow_null=True)
     citationCount = serializers.IntegerField()
     journal = serializers.CharField(allow_null=True)
+
+
+class ApiResponseSerializer(serializers.Serializer):
+    """
+    Define o formato padrão de resposta carismática da API.
+    """
+    success = serializers.BooleanField(help_text="Indica se a operação foi bem-sucedida.")
+    message = serializers.CharField(help_text="Uma mensagem amigável para o usuário.")
+    articles = ArticleSerializer(many=True, help_text="A lista de artigos encontrados.")
