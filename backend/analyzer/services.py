@@ -128,25 +128,25 @@ def summarize_article_with_gemini(article_text: str, natural_language_query: Opt
         **Consulta usuário:** "Resuma o artigo "Attention is all you need" com detalhes técnicos."
         **Sua saída: {
                         "problem": {
-                            "description": "Descreve qual é o problema central abordado pelo artigo e sua relevância dentro do campo de estudo.",
-                            "context": "Apresenta o cenário teórico ou prático em que o problema se insere, incluindo limitações ou lacunas de pesquisas anteriores.",
-                            "objective": "Explica o principal objetivo ou motivação do trabalho — o que os autores buscam resolver ou melhorar."
+                            description: Descreve qual é o problema central abordado pelo artigo e sua relevância dentro do campo de estudo.,
+                            context: Apresenta o cenário teórico ou prático em que o problema se insere, incluindo limitações ou lacunas de pesquisas anteriores.,
+                            objective: Explica o principal objetivo ou motivação do trabalho — o que os autores buscam resolver ou melhorar.
                         },
                         "methodology": {
-                            "approach": "Resumo do método, modelo ou técnica proposta para resolver o problema.",
-                            "components": "Principais elementos ou etapas da metodologia, como arquitetura, algoritmos, experimentos ou procedimentos analíticos.",
-                            "data_or_tools": "Informações sobre conjuntos de dados, ferramentas, frameworks ou tecnologias utilizadas.",
-                            "complexity_or_efficiency": "Discussão sobre desempenho, custo computacional ou vantagens em relação a métodos anteriores."
+                            approach: Resumo do método, modelo ou técnica proposta para resolver o problema.,
+                            components: Principais elementos ou etapas da metodologia, como arquitetura, algoritmos, experimentos ou procedimentos analíticos.,
+                            data_or_tools: Informações sobre conjuntos de dados, ferramentas, frameworks ou tecnologias utilizadas.,
+                            complexity_or_efficiency: Discussão sobre desempenho, custo computacional ou vantagens em relação a métodos anteriores.
                         },
-                        "results": {
-                            "datasets_or_experiments": "Descrição dos experimentos realizados ou dados analisados.",
-                            "performance_or_findings": "Principais resultados quantitativos e qualitativos, métricas usadas e comparações com abordagens existentes.",
-                            "interpretation": "Análise dos resultados e o que eles indicam em relação ao problema proposto."
+                        results: {
+                            datasets_or_experiments: Descrição dos experimentos realizados ou dados analisados.,
+                            performance_or_findings: Principais resultados quantitativos e qualitativos, métricas usadas e comparações com abordagens existentes.,
+                            interpretation: Análise dos resultados e o que eles indicam em relação ao problema proposto.
                         },
-                        "conclusion": {
-                            "summary": "Síntese geral das descobertas e contribuições do artigo.",
-                            "implications": "Impactos teóricos, práticos ou futuros da pesquisa.",
-                            "limitations_or_future_work": "Limitações identificadas e direções sugeridas para trabalhos futuros."
+                        conclusion: {
+                            summary: Síntese geral das descobertas e contribuições do artigo.,
+                            implications: Impactos teóricos, práticos ou futuros da pesquisa.,
+                            limitations_or_future_work: Limitações identificadas e direções sugeridas para trabalhos futuros.
                         }
                     }
     """
