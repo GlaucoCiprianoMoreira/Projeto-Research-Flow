@@ -6,3 +6,4 @@ requests
 google-generativeai
 PyPDF2
 pydantic
+drf-yasg
