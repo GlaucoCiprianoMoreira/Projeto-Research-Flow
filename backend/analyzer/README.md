@@ -18,18 +18,18 @@ Regras estritas:
 
 Foi feito um few-shot até então simples, para que a API entenda melhor o formato de resposta que desejamos retornar ao usuário.
 few_shot = """
-        Entrada: ""Rede neural convolucional leve para classificação de imagens; testes em CIFAR-10 atingiram 92 porcento de acurácia com menor custo computacional.""
-        Saída:
-        {"problem": "Necessidade de classificar imagens com eficiência computacional.", "methodology": "Arquitetura CNN leve otimizada para reduzir parâmetros.", "results": "Acurácia de 92 porcento em CIFAR-10 com redução de parâmetros.", "conclusion": "Bom trade-off entre desempenho e custo computacional."}
+    Entrada: ""Rede neural convolucional leve para classificação de imagens; testes em CIFAR-10 atingiram 92 porcento de acurácia com menor custo computacional.""
+    Saída:
+    {"problem": "Necessidade de classificar imagens com eficiência computacional.", "methodology": "Arquitetura CNN leve otimizada para reduzir parâmetros.", "results": "Acurácia de 92 porcento em CIFAR-10 com redução de parâmetros.", "conclusion": "Bom trade-off entre desempenho e custo computacional."}
 
-        Geral:
-        Entrada: "artigo + consulta do usuário"
-        Saída:
-        {"problem": "...", 
-        "methodology": "...", 
-        "results": "...", 
-        "conclusion": "..."}
-    """
+    Geral:
+    Entrada: "artigo + consulta do usuário"
+    Saída:
+    {"problem": "...", 
+    "methodology": "...", 
+    "results": "...", 
+    "conclusion": "..."}
+"""
 
 O resultado da API deve ser um JSON com as areas de problema, metodologia, resultados e conclusão para que o resumo do artigo seja melhor dividido em suas respectivas áreas.
 
