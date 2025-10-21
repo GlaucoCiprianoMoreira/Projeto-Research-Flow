@@ -36,25 +36,43 @@ class ApiResponseSerializer(serializers.Serializer):
 
 # --- Serializers do Resumo ---
 
-class SummarizeInputSerializer(serializers.Serializer):
-    """
-    Define o formato de entrada para o endpoint de resumo.
+class SummarizeBaseInputSerializer(serializers.Serializer):
+    """ Serializer base com o campo comum 'query' """
+    query = serializers.CharField(
+        help_text="(Opcional) Consulta em linguagem natural para focar o resumo.",
+        required=False,
+        allow_blank=True
+    )
+
+class SummarizeJsonInputSerializer(SummarizeBaseInputSerializer):
+    """ 
+    Define a entrada para o endpoint de resumo via JSON (texto ou URL).
     """
     input_value = serializers.CharField(
-        help_text="O texto completo do artigo OU a URL para o PDF."
+        help_text="O texto completo do artigo OU a URL para o PDF.",
+        required=True
     )
     is_url = serializers.BooleanField(
         default=False,
         help_text="Marque True se 'input_value' for uma URL; False se for texto."
     )
 
+class SummarizeFormInputSerializer(SummarizeBaseInputSerializer):
+    """
+    Define a entrada para o endpoint de resumo via FormData (upload de arquivo).
+    """
+    file = serializers.FileField(
+        required=True,
+        help_text="Upload de um arquivo PDF para ser resumido."
+    )
+    
+    # Nota: Os outros campos (como 'query') também virão como FormData.
+
+# Mantenha o seu serializer de SAÍDA (Output)
 class SummarizeOutputSerializer(serializers.Serializer):
-    """
-    Define o formato de saída do resumo estruturado.
-    """
+    # ... (Seu serializer de saída está perfeito, sem mudanças)
     problem = serializers.CharField(allow_blank=True, help_text="O problema abordado pelo artigo.")
     methodology = serializers.CharField(allow_blank=True, help_text="A metodologia utilizada.")
     results = serializers.CharField(allow_blank=True, help_text="Os resultados encontrados.")
     conclusion = serializers.CharField(allow_blank=True, help_text="A conclusão do artigo.")
-    # Usado para enviar mensagens de erro do backend
     error = serializers.CharField(allow_blank=True, required=False, help_text="Mensagem de erro, se houver.")

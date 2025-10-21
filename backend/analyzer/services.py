@@ -62,6 +62,29 @@ def call_model(model, prompt_text: str, max_tokens: int = 4096) -> str:
     except TypeError:
         return model.generate_content(prompt_text).text
 
+def extract_pdf_text_from_file(file_input) -> Optional[str]:
+    """
+    Extrai texto de um arquivo PDF (seja um caminho de arquivo ou um 
+    objeto de arquivo/stream).
+    Retorna None em caso de falha.
+    """
+    try:
+        # file_input pode ser um caminho (str) ou um stream (like-object)
+        reader = PdfReader(file_input)
+        
+        parts = []
+        for page in reader.pages:
+            text = page.extract_text()
+            if text:
+                parts.append(text)
+                
+        full_text = '\n\n'.join(parts).strip()
+        return full_text or None # Retorna None se o texto extraído estiver vazio
+        
+    except Exception as e:
+        print(f"Erro ao ler/extrair PDF do arquivo: {e}")
+        return None
+
 def fetch_pdf_text_from_url(url: str) -> Optional[str]:
     """
     Baixa um PDF a partir de uma URL e tenta extrair o texto usando PyPDF2.
@@ -206,21 +229,43 @@ def summarize_article_with_gemini(article_text: str, natural_language_query: Opt
     }
     
 
-def summarize_article(input_value: str, is_url: bool = False) -> dict:
-    """Wrapper used by views: accepts either raw text or a URL.
-    If is_url is True, attempts to download and extract the PDF text first.
-    Returns the same dict shape as summarize_article_with_gemini or an error dict.
+def summarize_article(input_value, input_type: str = 'text', natural_language_query: Optional[str] = None) -> dict:
     """
-    if is_url:
+    Wrapper principal para resumir artigos.
+    Aceita texto, URL de PDF ou um arquivo/caminho de PDF.
+
+    Args:
+        input_value: O conteúdo (texto, URL ou objeto/caminho de arquivo).
+        input_type: 'text', 'url' ou 'file'.
+        natural_language_query: (Opcional) A consulta específica do usuário.
+
+    Retorna:
+        Um dicionário com o resumo ou um dicionário de erro.
+    """
+    text = None
+    
+    if input_type == 'url':
         text = fetch_pdf_text_from_url(input_value)
         if not text:
-            return {"error": "Falha ao baixar/ler o PDF.", "details": "Não foi possível obter texto a partir da URL fornecida."}
-    else:
+            return {"error": "Falha ao baixar/ler o PDF da URL.", "details": "Não foi possível obter texto a partir da URL fornecida."}
+            
+    elif input_type == 'file':
+        # input_value aqui deve ser o objeto do arquivo (ex: request.files['file'])
+        # ou um caminho de arquivo temporário (ex: tmp_path)
+        text = extract_pdf_text_from_file(input_value)
+        if not text:
+            return {"error": "Falha ao ler o arquivo PDF.", "details": "Não foi possível extrair texto do arquivo PDF fornecido."}
+            
+    elif input_type == 'text':
         text = input_value or ''
+        
+    else:
+        return {"error": "Tipo de entrada (input_type) inválido.", "details": "Use 'text', 'url' ou 'file'."}
 
     if not text.strip():
         return {"error": "Texto vazio para resumir."}
 
-    return summarize_article_with_gemini(text)
+    # (Eu adicionei o natural_language_query aqui, pois sua função gemini o aceita)
+    return summarize_article_with_gemini(text, natural_language_query=natural_language_query)
 
 
