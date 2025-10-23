@@ -1,4 +1,5 @@
-#Explorer
+# Explorer
+
 Módulo de Busca (explorer)
 Este app é o "cérebro" por trás da funcionalidade de busca de artigos. Sua responsabilidade é receber uma consulta do usuário, processá-la com Inteligência Artificial e buscar os resultados em bases de dados acadêmicas.
 
