@@ -135,57 +135,144 @@ O **ponto de entrada da API**: `POST /api/search/`
 ---
 
 
+# Analyzer — Explorer
 
-# Analyzer (Resumo)
+> Documento estilo *explorer* que descreve o módulo **Analyzer** (Resumo de artigos científicos). Objetivo: servir como referência para desenvolvedores e documentação rápida para revisão de código.
 
-Módulo de Resumo (analyzer): Esse módulo traz a funcionalidade de resumo de artigos científicos entregues pelo usuário. O Analyzer é responsável por receber os artigos tanto em formato de URL (recebendo o link do site que está disponível o artigo) quanto via PDF fazendo o upload do arquivo. Em seguida, a ferramenta armazena os textos (até 50000 caracteres) presentes do site ou PDF e essa variável é utilizada pelo prompt de IA generativa do Gemini para gerar resumos.
+---
 
-Fluxo da Funcionalidade de Resumo:
+## 📂 Visão geral
 
-O Processo é organizado pelos métodos summarize_article_file_view ou summarize_article_json_view (localizados em api/views.py) a depender do que foi escolhido pelo usuário, se ele entregou o artigo via URL ou via PDF.
+O **Analyzer** recebe artigos científicos via **URL** (link) ou **PDF** (upload). Ele extrai o texto (até **50.000 caracteres**), combina com a *query* do usuário e envia para o serviço de IA generativa (Gemini) para produzir um resumo estruturado em JSON.
 
-Além do artigo, a API também recebe uma consulta (query) em linguagem natural para passar à IA generativa o que o usuário deseja.
+**Formato de saída desejado (JSON):**
 
-Essa consulta do usuário é entregue à API através do método summarize_article_with_gemini. A consulta é entregue para a API de maneira simples, sem enriquecimento.
+```json
+{
+  "problem": "...",
+  "methodology": "...",
+  "results": "...",
+  "conclusion": "..."
+}
+```
 
-Para suprir esse problema de não enriquecimento da query, foi adicionado/especificado um prompt com alguns aspectos que o resumo deve cobrir como: Regras estritas: - Retorne APENAS um objeto JSON válido (Com explicações, mais textos adicionais). - Mantenha a linguagem em português e seja objetivo. - Faça uma explicação completa e clara para cada seção. - Traga também detalhes específicos do artigo, como nomes de métodos, métricas e resultados numéricos.
+Linguagem: **Português**. Objetivo: objetividade e detalhes (métodos, métricas, valores numéricos).
 
-Foi feito um few-shot até então simples, para que a API entenda melhor o formato de resposta que desejamos retornar ao usuário. few_shot = """ Entrada: ""Rede neural convolucional leve para classificação de imagens; testes em CIFAR-10 atingiram 92 porcento de acurácia com menor custo computacional."" Saída: {"problem": "Necessidade de classificar imagens com eficiência computacional.", "methodology": "Arquitetura CNN leve otimizada para reduzir parâmetros.", "results": "Acurácia de 92 porcento em CIFAR-10 com redução de parâmetros.", "conclusion": "Bom trade-off entre desempenho e custo computacional."}
+---
 
-Geral:
-Entrada: "artigo + consulta do usuário"
-Saída:
-  {"problem": "...", 
-  "methodology": "...", 
-  "results": "...", 
-  "conclusion": "..."}
+## 🚦 Fluxo da funcionalidade (passo a passo)
 
-O resultado da API deve ser um JSON com as areas de problema, metodologia, resultados e conclusão para que o resumo do artigo seja melhor dividido em suas respectivas áreas.
+1. Cliente faz requisição para a API com: **artigo (URL ou PDF)** + **query** (texto simples).
+2. `api/views.py` escolhe entre:
 
-O generate_content da API do gemini recebe então: model (genai.GenerativeModel), pequeno prompt (Com as regras estritas), few-shot, query de consulta do usuário e artigo (limtado até 50000 caracteres para não exigir muitos tokens).
+   * `summarize_article_json_view` (URL / JSON)
+   * `summarize_article_file_view` (upload / FormData)
+3. `analyzer.services.summarize_article` orquestra o fluxo: valida entrada, invoca extração e prepara payload.
+4. Extração do texto:
 
-Principais componentes para o funcionamento ideal da ferramenta:
+   * `fetch_pdf_text_from_url(url)` — baixa PDF e extrai (PyPDF2)
+   * `extract_pdf_text_from_file(file_or_path)` — extrai texto de arquivo/stream
+   * Caso o artigo seja uma URL com HTML, a função faz *fetch* do HTML e extrai texto (optionally)
+5. Limita o texto a **50.000 caracteres** (corte com cuidado - preferir resumo de seções iniciais/abstract/métodos/resultados).
+6. `summarize_article_with_gemini` monta o prompt (regras estritas + few-shot + user query + trecho do artigo)
+7. `call_model` chama `genai.generate_content` com os campos corretos e retorna o JSON.
+8. Resultado é retornado ao front-end e gravado (opcional) em cache / banco.
 
-analyzer/services.py: responsável por organizar e executar toda a lógica de negócio da funcionalidade de resumo de artigos. Recebe a consulta e o artigo para então serem trabalhados.
+---
 
-summarize_article: responsável por orquestrar o recebimento de informações do views.py e verificar ser o artigo foi entrege em URL ou PDF, para então chamar os métodos necessários e por fim retornar o summarize_article_with_gemini
+## 🧩 Principais componentes (arquivos e responsabilidades)
 
-summarize_article_with_gemini: quem gera o prompt de aspectos gerais exigidos, cria o few_shot, limita os caracteres do artigo passados para a API e recebe a consulta do usuário. Por fim, junta todas essas informações e passa para o call_model.
+* **analyzer/services.py**
 
-call_model: responsável por chamar o método generate_content da API do Gemini corretamente. Gera o resultado/resumo propriamente dito, que é em seguida retornado para o front-end e entregue ao usuário.
+  * `summarize_article(request_data)` — orquestra o processo e decide fluxo URL vs PDF.
+  * `summarize_article_with_gemini(user_query, article_text)` — monta prompt + few-shot + limita texto.
+  * `call_model(prompt_payload)` — chama Gemini (`genai.generate_content`) e normaliza a resposta.
+  * `extract_pdf_text_from_file(file_or_path)` — extrai texto de PDF, retorna `str` ou `None`.
+  * `fetch_pdf_text_from_url(url)` — baixa e extrai texto de PDF remoto.
 
-extract_pdf_text_from_file: Extrai texto de um arquivo PDF (seja um caminho de arquivo ou um 
-objeto de arquivo/stream). Retorna None em caso de falha.
+* **api/views.py**
 
-fetch_pdf_text_from_url: Baixa um PDF a partir de uma URL e tenta extrair o texto usando PyPDF2. Retorna None em caso de falha.
+  * `summarize_article_json_view(request)` — aceita JSON com `url` ou `text` e `query`.
+  * `summarize_article_file_view(request)` — aceita FormData com `file` (PDF) e `query`.
 
-api/serializers.py: contém as funções de recebimento de informações entregues pelo usuário.
+* **api/serializers.py**
 
-SummarizeBaseInputSerializer: Define o campo comum query, que permite uma consulta opcional em linguagem natural para direcionar o foco do resumo.
+  * `SummarizeBaseInputSerializer` — campo `query` (opcional).
+  * `SummarizeJsonInputSerializer` — recebe `url` ou `text` e `query`.
+  * `SummarizeFormInputSerializer` — recebe `file` (PDF) e `query`.
 
-SummarizeJsonInputSerializer: Usado quando a entrada vem em JSON (Texto por escrito ou URL).
+---
 
-SummarizeFormInputSerializer: Usado quando a entrada vem via FormData (upload). Recebe: file: o arquivo PDF a ser resumido.
+## ✏️ Prompt e few-shot (exemplo)
+
+**Regras estritas (resumidas):**
+
+* Retornar **APENAS** um objeto JSON válido.
+* Linguagem: **Português**, seja objetivo.
+* Explique completa e claramente cada seção.
+* Inclua detalhes específicos (nomes de métodos, métricas, resultados numéricos).
+
+**Few-shot (exemplo simplificado):**
+
+```
+Entrada: "Rede neural convolucional leve para classificação de imagens; testes em CIFAR-10 atingiram 92 porcento de acurácia com menor custo computacional."
+Saída: {"problem": "Necessidade de classificar imagens com eficiência computacional.", "methodology": "Arquitetura CNN leve otimizada para reduzir parâmetros.", "results": "Acurácia de 92 porcento em CIFAR-10 com redução de parâmetros.", "conclusion": "Bom trade-off entre desempenho e custo computacional."}
+```
+
+**Montagem do payload para Gemini:**
+
+* `model`: `genai.GenerativeModel` configurado pela aplicação
+* `prompt`: regras + instruções (muito curtas e diretas)
+* `few_shot`: string de exemplos
+* `user_query`: a consulta original do usuário (sem enriquecimento)
+* `article_text`: até 50.000 caracteres do artigo
+
+---
+
+## 🛠️ Boas práticas e decisões de implementação
+
+* **Limitar texto a 50k chars**: preferir extrair abstract, introdução, métodos e resultados em ordem, não apenas cortar do começo ao fim.
+* **Validação**: checar tipo de arquivo, tamanho e se há texto extraído; retornar erros claros (HTTP 400/422).
+* **Timeouts e retries**: colocar timeout ao chamar Gemini e políticas simples de retry (exp/backoff) no `call_model`.
+* **Normalização do output**: validar que a resposta é JSON, desserializar com `json.loads` e validar campos obrigatórios (`problem`, `methodology`, `results`, `conclusion`).
+* **Segurança**: sanitizar inputs de URL; não executar HTML/JS; limitar tamanho de upload.
+
+---
+
+## 🧪 Tratamento de falhas comuns
+
+* *Extração falhou (None)*: retornar mensagem de erro com sugestão — "não foi possível extrair texto do PDF; verifique o arquivo ou envie o link."
+* *Resposta do modelo não é JSON válida*: tentar limpar ruído com regex (tentar extrair o primeiro objeto JSON) e, se falhar, retornar erro 502 com o conteúdo bruto para análise.
+* *Conteúdo muito longo*: avisar que só foram usados os primeiros 50k caracteres e possivelmente oferecer opção de resumo por seção.
+
+---
+
+## ✅ Exemplo rápido de uso (requests)
+
+**JSON (URL/text):**
+
+```
+POST /api/summarize/json
+Content-Type: application/json
+
+{
+  "url": "https://exemplo.org/artigo.pdf",
+  "query": "Resuma os métodos e resultados, com foco em métricas de acurácia e datasets usados."
+}
+```
+
+**FormData (upload):**
+
+```
+POST /api/summarize/file
+Content-Type: multipart/form-data
+
+file=@artigo.pdf
+query="Explique em português os métodos e resultados, com números."
+```
+
+---
+
 
 ## ⚙️ Configuração de Ambiente
 
