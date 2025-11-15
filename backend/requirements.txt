@@ -1,0 +1,9 @@
+ 
+django
+djangorestframework
+python-dotenv
+requests
+google-generativeai
+PyPDF2
+pydantic
+drf_spectacular
