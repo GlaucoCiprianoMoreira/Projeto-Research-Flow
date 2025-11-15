@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from drf_spectacular.utils import extend_schema
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
+from writer.services import extract_text_from_file
 
 # Importa TODOS os serializers do arquivo que acabamos de criar
 from .serializers import (
@@ -10,12 +11,15 @@ from .serializers import (
     ApiResponseSerializer,
     SummarizeJsonInputSerializer, 
     SummarizeFormInputSerializer,
-    SummarizeOutputSerializer
+    SummarizeOutputSerializer,
+    FormatTextSerializer,
+    FormatTextOutputSerializer
 )
 
 # Importa a lógica de CADA app separado
 from explorer.services import extract_keywords_with_gemini, search_articles_from_api
 from analyzer.services import summarize_article
+from writer.services import format_text_with_gemini
 
 
 @extend_schema(exclude=True)
@@ -190,3 +194,50 @@ def summarize_article_file_view(request):
     )
     
     return _handle_summarize_response(result)
+
+@extend_schema(
+    summary="Formata Texto com IA e Gera PDF",
+    description="Recebe um arquivo (.pdf ou .txt) e um estilo, formata o texto usando Gemini e gera PDF.",
+    request={
+        'multipart/form-data': {
+            'type': 'object',
+            'properties': {
+                'file': {
+                    'type': 'string',
+                    'format': 'binary'
+                },
+                'style': {
+                    'type': 'string'
+                },
+                'filename': {
+                    'type': 'string'
+                }
+            },
+            'required': ['file']
+        }
+    },
+
+    responses={200: FormatTextOutputSerializer}
+)
+@api_view(['POST'])
+@parser_classes([MultiPartParser, FormParser])
+def format_text_view(request):
+    serializer = FormatTextSerializer(data=request.data)
+
+    if not serializer.is_valid():
+        return Response(serializer.errors, status=400)
+
+    uploaded_file = serializer.validated_data['file']
+    style = serializer.validated_data.get('style')
+    filename = serializer.validated_data.get('filename')
+
+    # ---- Lê/extrai o texto do arquivo enviado ---
+    extracted_text = extract_text_from_file(uploaded_file)
+
+    # ---- Chama o Gemini para formatar ----
+    success = format_text_with_gemini(extracted_text, style, filename)
+
+    if success:
+        return Response({"message": "Texto formatado e PDF gerado com sucesso."})
+    else:
+        return Response({"error": "Falha ao formatar o texto."}, status=500)

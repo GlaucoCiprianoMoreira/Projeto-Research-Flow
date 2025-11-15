@@ -7,3 +7,41 @@ __pycache__/
 
 # Arquivos de ambiente
 .env
+
+# Ambiente virtual
+ambiente/
+.env/
+.ambiente/
+
+# Arquivos de cache do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs
+*.log
+
+# Configurações do editor/IDE
+.vscode/
+.idea/
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Arquivos de dependências criados automaticamente
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+
+# Build
+build/
+dist/
+
+# Django
+*.sqlite3
+staticfiles/
+media/

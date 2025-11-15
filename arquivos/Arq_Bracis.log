@@ -1,0 +1,1513 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.15)  15 NOV 2025 18:22
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**C:/Users/glauc/Glauco/UECE/Ext_3/Projeto-Research-Flow/arquivos/Arq_Bracis.te
+x
+
+(C:/Users/glauc/Glauco/UECE/Ext_3/Projeto-Research-Flow/arquivos/Arq_Bracis.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-10-24>
+(C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+)
+(C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+)
+(C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+)
+(C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+)
+(C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+)
+(C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/lastpage\lastpage.sty
+Package: lastpage 2025/08/14 v2.1h lastpage: 2.09 or 2e? (HMM)
+
+(C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/lastpage\lastpage2e.sty
+Package: lastpage2e 2025/08/14 v2.1h Decide which 2e lastpage version to use (H
+MM)
+
+(C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/lastpage\lastpagemodern
+.sty
+Package: lastpagemodern 2025-08-14 v2.1h Refers to last page's name (HMM; JPG)
+\c@lastpagecount=\count283
+) 
+))
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 10
+.
+ (C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+(C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def
+File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count284
+)
+No file Arq_Bracis.aux.
+\openout1 = `Arq_Bracis.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 \documentclass
+                   [conference]{IEEEtran}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.15 \usepackage
+                [utf8]{inputenc}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 \usepackage
+                [english]{babel}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 \usepackage
+                {amsmath}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 \usepackage
+                {graphicx}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.19 \usepackage
+                {cite}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.41 \begin{document}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[1
+
+{C:/Users/glauc/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/glau
+c/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 4
+3.
+
+(C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 4
+3.
+
+(C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
+43.
+
+(C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
+43.
+
+(C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
+File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 43.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 43.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 43.
+
+! Undefined control sequence.
+\@author -> \IEEEauthorblockN 
+                              { Ashish Vaswani\IEEEauthorrefmark {1}\thanks ...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@author ...kN { Ashish Vaswani\IEEEauthorrefmark 
+                                                  {1}\thanks {Equal contribu...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
+3.
+(C:\Users\glauc\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+! Undefined control sequence.
+\@author ...rch.}, Noam Shazeer\IEEEauthorrefmark 
+                                                  {1}, Niki Parmar\IEEEautho...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@author ...rk {1}, Niki Parmar\IEEEauthorrefmark 
+                                                  {2}, Jakob Uszkoreit\IEEEa...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@author ...2}, Jakob Uszkoreit\IEEEauthorrefmark 
+                                                  {2}, Llion Jones\IEEEautho...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@author ...rk {2}, Llion Jones\IEEEauthorrefmark 
+                                                  {2}, \\ Aidan N. Gomez\IEE...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.43 \maketitle
+               
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+! Undefined control sequence.
+\@author ..., \\ Aidan N. Gomez\IEEEauthorrefmark 
+                                                  {1}\IEEEauthorrefmark {3}\...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@author ...EEauthorrefmark {1}\IEEEauthorrefmark 
+                                                  {3}\thanks {Work performed...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@author ...n.}, Łukasz Kaiser\IEEEauthorrefmark 
+                                                  {1}, Illia Polosukhin\IEEE...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@author ...}, Illia Polosukhin\IEEEauthorrefmark 
+                                                  {2}\IEEEauthorrefmark {4}\...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@author ...EEauthorrefmark {2}\IEEEauthorrefmark 
+                                                  {4}\thanks {Work performed...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@author ...Google Research.} } \IEEEauthorblockA 
+                                                  { \IEEEauthorrefmark {1}Go...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@author ...IEEEauthorblockA { \IEEEauthorrefmark 
+                                                  {1}Google Brain, \IEEEauth...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@author ...k {1}Google Brain, \IEEEauthorrefmark 
+                                                  {2}Google Research, \IEEEa...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@author ...2}Google Research, \IEEEauthorrefmark 
+                                                  {3}University of Toronto, ...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\@author ...ersity of Toronto, \IEEEauthorrefmark 
+                                                  {4}Independent \\ \{avaswa...
+l.43 \maketitle
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing { inserted.
+<inserted text> 
+                {
+l.43 \maketitle
+               
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+
+Overfull \hbox (333.69264pt too wide) in paragraph at lines 43--43
+ [][] 
+ []
+
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 43.
+
+! LaTeX Error: Environment IEEEkeywords undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.63 \begin{IEEEkeywords}
+                         
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{document} on input line 41 ended by \end{IEEEkeywords}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.65 \end{IEEEkeywords}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+LaTeX Warning: Citation `ref13' on page 2 undefined on input line 69.
+
+
+LaTeX Warning: Citation `ref7' on page 2 undefined on input line 69.
+
+
+LaTeX Warning: Citation `ref35' on page 2 undefined on input line 69.
+
+
+LaTeX Warning: Citation `ref2' on page 2 undefined on input line 69.
+
+
+LaTeX Warning: Citation `ref5' on page 2 undefined on input line 69.
+
+
+LaTeX Warning: Citation `ref38' on page 2 undefined on input line 69.
+
+
+LaTeX Warning: Citation `ref24' on page 2 undefined on input line 69.
+
+
+LaTeX Warning: Citation `ref15' on page 2 undefined on input line 69.
+
+[2{C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 71.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 71.
+
+LaTeX Warning: Citation `ref21' on page 3 undefined on input line 71.
+
+
+LaTeX Warning: Citation `ref32' on page 3 undefined on input line 71.
+
+
+LaTeX Warning: Citation `ref2' on page 3 undefined on input line 73.
+
+
+LaTeX Warning: Citation `ref19' on page 3 undefined on input line 73.
+
+
+LaTeX Warning: Citation `ref27' on page 3 undefined on input line 73.
+
+
+LaTeX Warning: Citation `ref16' on page 3 undefined on input line 79.
+
+
+LaTeX Warning: Citation `ref18' on page 3 undefined on input line 79.
+
+
+LaTeX Warning: Citation `ref9' on page 3 undefined on input line 79.
+
+
+LaTeX Warning: Citation `ref12' on page 3 undefined on input line 79.
+
+
+LaTeX Warning: Citation `ref4' on page 3 undefined on input line 81.
+
+
+LaTeX Warning: Citation `ref27' on page 3 undefined on input line 81.
+
+
+LaTeX Warning: Citation `ref28' on page 3 undefined on input line 81.
+
+
+LaTeX Warning: Citation `ref22' on page 3 undefined on input line 81.
+
+[3{C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.en
+c}{C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.en
+c}{C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
+
+LaTeX Warning: Citation `ref34' on page 4 undefined on input line 83.
+
+
+LaTeX Warning: Citation `ref17' on page 4 undefined on input line 85.
+
+
+LaTeX Warning: Citation `ref18' on page 4 undefined on input line 85.
+
+
+LaTeX Warning: Citation `ref9' on page 4 undefined on input line 85.
+
+
+LaTeX Warning: Citation `ref5' on page 4 undefined on input line 89.
+
+
+LaTeX Warning: Citation `ref2' on page 4 undefined on input line 89.
+
+
+LaTeX Warning: Citation `ref35' on page 4 undefined on input line 89.
+
+
+LaTeX Warning: Citation `ref10' on page 4 undefined on input line 89.
+
+! Undefined control sequence.
+l.93     \includegraphics
+                         [width=0.8\columnwidth]{example-image-a} % Substitu...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.93     \includegraphics[width=0.8\columnwidth]
+                                                {example-image-a} % Substitu...
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.93     \includegraphics[width=0.8\columnwidth]
+                                                {example-image-a} % Substitu...
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+LaTeX Warning: Reference `fig:arch' on page 4 undefined on input line 98.
+
+
+LaTeX Warning: Citation `ref11' on page 4 undefined on input line 101.
+
+
+LaTeX Warning: Citation `ref1' on page 4 undefined on input line 101.
+
+! Undefined control sequence.
+<recently read> \text 
+                      
+l.101 ...s, the output of each sub-layer is $\text
+                                                  {LayerNorm}(x + \text{Subl...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.101 ... sub-layer is $\text{LayerNorm}(x + \text
+                                                  {Sublayer}(x))$, where $\t...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<recently read> \text 
+                      
+l.101 ...m}(x + \text{Sublayer}(x))$, where $\text
+                                                  {Sublayer}(x)$ is the func...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.101 ...s, produce outputs of dimension $d_{\text
+                                                  {model}} = 512$.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[4]
+! Undefined control sequence.
+l.110     \includegraphics
+                          [width=\columnwidth]{example-image-b} % Substitua ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.110     \includegraphics[width=\columnwidth]
+                                              {example-image-b} % Substitua ...
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.110     \includegraphics[width=\columnwidth]
+                                              {example-image-b} % Substitua ...
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+LaTeX Warning: Reference `fig:attention' on page 5 undefined on input line 116.
+
+
+! Undefined control sequence.
+l.120     \text
+               {Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.120     \text{Attention}(Q, K, V) = \text
+                                           {softmax}\left(\frac{QK^T}{\sqrt{...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Citation `ref2' on page 5 undefined on input line 123.
+
+
+LaTeX Warning: Citation `ref3' on page 5 undefined on input line 125.
+
+! Undefined control sequence.
+l.128 ... single attention function with $d_{\text
+                                                  {model}}$-dimensional keys...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `fig:attention' on page 5 undefined on input line 128.
+
+
+[5{C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.en
+c}]
+
+! LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.131 \begin{align*}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.132     \text
+               {MultiHead}(Q, K, V) &= \text{Concat}(\text{head}_1, ..., \te...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.132     \text{MultiHead}(Q, K, V) &
+                                     = \text{Concat}(\text{head}_1, ..., \te...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.132     \text{MultiHead}(Q, K, V) &= \text
+                                            {Concat}(\text{head}_1, ..., \te...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.132 ...ultiHead}(Q, K, V) &= \text{Concat}(\text
+                                                  {head}_1, ..., \text{head}...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.132 ...d}(Q, K, V) &= \text{Concat}(\text{head}_
+                                                  1, ..., \text{head}_h)W^O \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Undefined control sequence.
+l.132 ...= \text{Concat}(\text{head}_1, ..., \text
+                                                  {head}_h)W^O \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<recently read> \text 
+                      
+l.133     \text
+               {where head}_i &= \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.133     \text{where head}_i &
+                               = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.133     \text{where head}_i &= \text
+                                      {Attention}(QW_i^Q, KW_i^K, VW_i^V)
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: \begin{document} on input line 41 ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.134 \end{align*}
+                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.134 \end{align*}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Undefined control sequence.
+l.135 ...are parameter matrices $W_i^Q \in \mathbb
+                                                  {R}^{d_{\text{model}} \tim...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.135 ... matrices $W_i^Q \in \mathbb{R}^{d_{\text
+                                                  {model}} \times d_k}$, $W_...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.135 ...{model}} \times d_k}$, $W_i^K \in \mathbb
+                                                  {R}^{d_{\text{model}} \tim...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.135 ...es d_k}$, $W_i^K \in \mathbb{R}^{d_{\text
+                                                  {model}} \times d_k}$, $W_...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.135 ...{model}} \times d_k}$, $W_i^V \in \mathbb
+                                                  {R}^{d_{\text{model}} \tim...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.135 ...es d_k}$, $W_i^V \in \mathbb{R}^{d_{\text
+                                                  {model}} \times d_v}$ and ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.135 ...model}} \times d_v}$ and $W^O \in \mathbb
+                                                  {R}^{hd_v \times d_{\text{...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.135 ...$W^O \in \mathbb{R}^{hd_v \times d_{\text
+                                                  {model}}}$.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (11.16127pt too wide) in paragraph at lines 130--136
+\T1/lmr/m/n/10 head, av-er-ag-ing in-hibits this.  Mul-ti-Head(Q, K, V) = Conca
+t(head$[]\OML/lmm/m/it/10 ; :::; [][]\OT1/lmr/m/n/10 )\OML/lmm/m/it/10 W[][] 
+ []
+
+! Undefined control sequence.
+l.137 ...ach of these we use $d_k = d_v = d_{\text
+                                                  {model}}/h = 64$. Due to t...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Citation `ref38' on page 6 undefined on input line 142.
+
+
+LaTeX Warning: Citation `ref2' on page 6 undefined on input line 142.
+
+
+LaTeX Warning: Citation `ref9' on page 6 undefined on input line 142.
+
+
+LaTeX Warning: Reference `fig:attention' on page 6 undefined on input line 144.
+
+
+! Undefined control sequence.
+l.150     \text
+               {FFN}(x) = \max(0, xW_1 + b_1)W_2 + b_2
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[6]
+! Undefined control sequence.
+l.152 ...ionality of input and output is $d_{\text
+                                                  {model}} = 512$, and the i...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.155 ... tokens to vectors of dimension $d_{\text
+                                                  {model}}$. We also use the...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Citation `ref30' on page 7 undefined on input line 155.
+
+! Undefined control sequence.
+l.155 ...multiply those weights by $\sqrt{d_{\text
+                                                  {model}}}$.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.158 ...codings have the same dimension $d_{\text
+                                                  {model}}$ as the embedding...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Citation `ref9' on page 7 undefined on input line 158.
+
+
+! LaTeX Error: Environment align* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.161 \begin{align*}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.162 PE_
+         {(pos, 2i)} &= \sin(pos / 10000^{2i/d_{\text{model}}}) \\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Misplaced alignment tab character &.
+l.162 PE_{(pos, 2i)} &
+                      = \sin(pos / 10000^{2i/d_{\text{model}}}) \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.162 ...os, 2i)} &= \sin(pos / 10000^{2i/d_{\text
+                                                  {model}}}) \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.163 PE_{(pos, 2i+1)} &
+                        = \cos(pos / 10000^{2i/d_{\text{model}}})
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+l.163 ..., 2i+1)} &= \cos(pos / 10000^{2i/d_{\text
+                                                  {model}}})
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: \begin{document} on input line 41 ended by \end{align*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.164 \end{align*}
+                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.164 \end{align*}
+                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (22.58926pt too wide) in paragraph at lines 160--166
+[]\T1/lmr/m/n/10 In this work, we use sine and co-sine func-tions of dif-fer-en
+t fre-quen-cies:  PE$[] \OT1/lmr/m/n/10 =
+ []
+
+
+LaTeX Warning: Citation `ref9' on page 7 undefined on input line 167.
+
+! Undefined control sequence.
+l.171 ...1, ..., z_n)$, with $x_i, z_i \in \mathbb
+                                                  {R}^d$, such as a hidden l...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[7]
+
+LaTeX Warning: Citation `ref12' on page 8 undefined on input line 175.
+
+
+Overfull \hbox (8.5359pt too wide) in paragraph at lines 181--196
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `tab:comparison' on page 8 undefined on input line 198
+.
+
+
+LaTeX Warning: Citation `ref38' on page 8 undefined on input line 198.
+
+
+LaTeX Warning: Citation `ref31' on page 8 undefined on input line 198.
+
+
+LaTeX Warning: Citation `ref18' on page 8 undefined on input line 200.
+
+
+LaTeX Warning: Citation `ref6' on page 8 undefined on input line 200.
+
+[8]
+
+LaTeX Warning: Citation `ref3' on page 9 undefined on input line 208.
+
+
+LaTeX Warning: Citation `ref38' on page 9 undefined on input line 208.
+
+
+LaTeX Warning: Citation `ref20' on page 9 undefined on input line 214.
+
+! Undefined control sequence.
+l.216 lrate = d_{\text
+                      {model}}^{-0.5} \cdot \min(\text{step\_num}^{-0.5}, \t...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.216 ... d_{\text{model}}^{-0.5} \cdot \min(\text
+                                                  {step\_num}^{-0.5}, \text{...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.216 ...\cdot \min(\text{step\_num}^{-0.5}, \text
+                                                  {step\_num} \cdot \text{wa...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.216 ...num}^{-0.5}, \text{step\_num} \cdot \text
+                                                  {warmup\_steps}^{-1.5})
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<recently read> \text 
+                      
+l.218 ...arning rate linearly for the first $\text
+                                                  {warmup\_steps}$ training ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<recently read> \text 
+                      
+l.218 ...e root of the step number. We used $\text
+                                                  {warmup\_steps} = 4000$.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (11.88011pt too wide) in paragraph at lines 217--219
+\T1/lmr/m/n/10 This cor-re-sponds to in-creas-ing the learn-ing rate lin-early 
+for the first $[]$
+ []
+
+[9]
+
+LaTeX Warning: Citation `ref33' on page 10 undefined on input line 223.
+
+
+LaTeX Warning: Citation `ref36' on page 10 undefined on input line 225.
+
+
+LaTeX Warning: Reference `tab:results' on page 10 undefined on input line 229.
+
+
+LaTeX Warning: Reference `tab:variations' on page 10 undefined on input line 22
+9.
+
+
+Overfull \hbox (1.36095pt too wide) in paragraph at lines 231--232
+[]\T1/lmr/m/n/10 On the WMT 2014 English-to-French trans-la-tion task, our big 
+model achieves
+ []
+
+
+LaTeX Warning: Citation `ref38' on page 10 undefined on input line 233.
+
+
+LaTeX Warning: Citation `ref38' on page 10 undefined on input line 233.
+
+
+LaTeX Warning: Reference `tab:results' on page 10 undefined on input line 235.
+
+
+LaTeX Warning: Citation `ref18' on page 10 undefined on input line 246.
+
+
+LaTeX Warning: Citation `ref39' on page 10 undefined on input line 247.
+
+
+LaTeX Warning: Citation `ref38' on page 10 undefined on input line 248.
+
+
+LaTeX Warning: Citation `ref9' on page 10 undefined on input line 249.
+
+
+LaTeX Warning: Citation `ref32' on page 10 undefined on input line 250.
+
+
+LaTeX Warning: Citation `ref39' on page 10 undefined on input line 252.
+
+
+LaTeX Warning: Citation `ref38' on page 10 undefined on input line 253.
+
+
+LaTeX Warning: Citation `ref9' on page 10 undefined on input line 254.
+
+
+Overfull \hbox (41.06435pt too wide) in paragraph at lines 241--260
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `tab:variations' on page 10 undefined on input line 26
+3.
+
+[10]
+
+LaTeX Warning: Reference `tab:variations' on page 11 undefined on input line 26
+5.
+
+
+LaTeX Warning: Reference `tab:variations' on page 11 undefined on input line 26
+7.
+
+
+LaTeX Warning: Citation `ref9' on page 11 undefined on input line 267.
+
+! Undefined control sequence.
+l.275         & $N$ & $d_{\text
+                               {model}}$ & $d_{ff}$ & $h$ & $d_k$ & $d_v$ & ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Citation `ref37' on page 11 undefined on input line 308.
+
+! Undefined control sequence.
+l.310 ...ined a 4-layer transformer with $d_{\text
+                                                  {model}} = 1024$ on the Wa...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Citation `ref25' on page 11 undefined on input line 310.
+
+
+LaTeX Warning: Citation `ref37' on page 11 undefined on input line 310.
+
+[11]
+
+LaTeX Warning: Reference `tab:parsing' on page 12 undefined on input line 314.
+
+
+LaTeX Warning: Citation `ref8' on page 12 undefined on input line 314.
+
+
+LaTeX Warning: Citation `ref37' on page 12 undefined on input line 316.
+
+
+LaTeX Warning: Citation `ref29' on page 12 undefined on input line 316.
+
+
+LaTeX Warning: Citation `ref37' on page 12 undefined on input line 326.
+
+
+LaTeX Warning: Citation `ref29' on page 12 undefined on input line 327.
+
+
+LaTeX Warning: Citation `ref40' on page 12 undefined on input line 328.
+
+
+LaTeX Warning: Citation `ref8' on page 12 undefined on input line 329.
+
+
+LaTeX Warning: Citation `ref40' on page 12 undefined on input line 332.
+
+
+LaTeX Warning: Citation `ref14' on page 12 undefined on input line 333.
+
+
+LaTeX Warning: Citation `ref26' on page 12 undefined on input line 334.
+
+
+LaTeX Warning: Citation `ref37' on page 12 undefined on input line 335.
+
+
+LaTeX Warning: Citation `ref23' on page 12 undefined on input line 338.
+
+
+LaTeX Warning: Citation `ref8' on page 12 undefined on input line 339.
+
+
+Overfull \hbox (19.07869pt too wide) in paragraph at lines 322--342
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[12]
+Overfull \hbox (146.3609pt too wide) in paragraph at lines 351--352
+[]\T1/lmr/m/n/10 The code we used to train and eval-u-ate our mod-els is avail-
+able at https://github.com/tensorflow/tensor2tensor. 
+ []
+
+[13]
+Underfull \hbox (badness 1360) in paragraph at lines 360--361
+[]\T1/lmr/m/n/10 Denny Britz, Anna Goldie, Minh-Thang Lu-ong, and Quoc V. Le.
+ []
+
+[14] [15]
+Underfull \hbox (badness 1609) in paragraph at lines 389--390
+[]\T1/lmr/m/n/10 Noam Shazeer, Aza-lia Mirho-seini, Krzysztof Maziarz, Andy Dav
+is,
+ []
+
+[16] [17]
+! Undefined control sequence.
+l.405     \includegraphics
+                          [width=0.8\textwidth]{example-image-c} % Substitua...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.405     \includegraphics[width=0.8\textwidth]
+                                               {example-image-c} % Substitua...
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.405     \includegraphics[width=0.8\textwidth]
+                                               {example-image-c} % Substitua...
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Undefined control sequence.
+l.412     \includegraphics
+                          [width=0.8\textwidth]{example-image-d} % Substitua...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.412     \includegraphics[width=0.8\textwidth]
+                                               {example-image-d} % Substitua...
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.412     \includegraphics[width=0.8\textwidth]
+                                               {example-image-d} % Substitua...
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Undefined control sequence.
+l.419     \includegraphics
+                          [width=0.8\textwidth]{example-image-e} % Substitua...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.419     \includegraphics[width=0.8\textwidth]
+                                               {example-image-e} % Substitua...
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.419     \includegraphics[width=0.8\textwidth]
+                                               {example-image-e} % Substitua...
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+[18
+
+] 
+enddocument/afterlastpage (AED): lastpage setting LastPage.
+(Arq_Bracis.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-10-24>
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package lastpage Warning: Rerun to get the references right on input line 424.
+
+ )
+(\end occurred inside a group at level 1)
+
+### semi simple group (level 1) entered at line 41 (\begingroup)
+### bottom level 
+Here is how much of TeX's memory you used:
+ 1122 strings out of 467871
+ 20347 string characters out of 5418375
+ 459736 words of memory out of 5000000
+ 29997 multiletter control sequences out of 15000+600000
+ 706326 words of font info for 81 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 57i,11n,65p,1038b,370s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/lm/lmbx10.pfb><C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/lm/lmbx12.pfb><C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/lm/lmbx9.pfb><C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/lm/lmex10.pfb><C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/lm/lmmi10.pfb><C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/lm/lmmi5.pfb><C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+lm/lmmi6.pfb><C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
+m/lmmi7.pfb><C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+/lmmi8.pfb><C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/
+lmr10.pfb><C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/l
+mr12.pfb><C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
+r17.pfb><C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr
+6.pfb><C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.
+pfb><C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pf
+b><C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb>
+<C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb>
+<C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
+<C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><
+C:/Users/glauc/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb>
+Output written on Arq_Bracis.pdf (18 pages, 436223 bytes).
+PDF statistics:
+ 190 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

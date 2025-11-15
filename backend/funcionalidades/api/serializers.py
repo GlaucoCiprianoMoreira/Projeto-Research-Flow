@@ -73,3 +73,35 @@ class SummarizeOutputSerializer(serializers.Serializer):
     results = serializers.CharField(allow_blank=True, help_text="Os resultados encontrados.")
     conclusion = serializers.CharField(allow_blank=True, help_text="A conclusão do artigo.")
     error = serializers.CharField(allow_blank=True, required=False, help_text="Mensagem de erro, se houver.")
+
+# --- Serializers do Formatador ---
+
+class FormatTextSerializer(serializers.Serializer):
+    """
+    Serializer mínimo para upload via multipart/form-data.
+    - file: o arquivo enviado (pdf ou txt)
+    - style: (opcional) nome do estilo a ser aplicado
+    - filename: (opcional) sugestão de nome base para os arquivos gerados
+    """
+    file = serializers.FileField(required=True, help_text="Upload do arquivo (.pdf ou .txt).")
+    style = serializers.CharField(required=False, allow_blank=True, help_text="Nome do estilo (ex: 'AAAI').")
+    filename = serializers.CharField(required=False, allow_blank=True, help_text="Nome base para salvar arquivos (sem extensão).")
+
+
+class FewshotInputSerializer(serializers.Serializer):
+    """
+    Opcional: se você expõe endpoint para gerar few-shot baseado em 'style'.
+    """
+    style = serializers.CharField(required=True, help_text="Nome do estilo/conferência (ex: 'AAAI').")
+
+class FormatTextOutputSerializer(serializers.Serializer):
+    """
+    Resposta padrão para requests de formatação.
+    """
+    success = serializers.BooleanField()
+    message = serializers.CharField(allow_blank=True)
+    tex_path = serializers.CharField(allow_blank=True, required=False,
+                                     help_text="Caminho do arquivo .tex gerado (no servidor).")
+    pdf_path = serializers.CharField(allow_blank=True, required=False,
+                                     help_text="Caminho do arquivo .pdf gerado (no servidor).")
+    error = serializers.CharField(allow_blank=True, required=False)

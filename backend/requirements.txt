@@ -7,3 +7,4 @@ google-generativeai
 PyPDF2
 pydantic
 drf_spectacular
+pylatex
