@@ -43,18 +43,29 @@ def search_articles_view(request):
     """
     Endpoint para buscar artigos.
     """
+    # 1. Validar os dados de entrada (query, sort_by, etc.)
     serializer = SearchQuerySerializer(data=request.data)
     if not serializer.is_valid():
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    natural_query = serializer.validated_data['query']
-    keywords = extract_keywords_with_gemini(natural_query)
-    articles = search_articles_from_api(keywords)
-
+    validated_data = serializer.validated_data
+    
+    keywords = extract_keywords_with_gemini(validated_data['query'])
+    
+    # 4. Chamar a lógica de busca com TODOS os parâmetros
+    articles = search_articles_from_api(
+        query=keywords,
+        sort_by=validated_data['sort_by'],
+        year_from=validated_data.get('year_from'),
+        year_to=validated_data.get('year_to'),
+        offset=validated_data['offset'],
+        is_open_access=validated_data['is_open_access']
+    )
+    # 5. Formatar a resposta carismática
     if "error" in articles:
         response_data = {
             "success": False,
-            "message": "Puxa, tive um problema para me conectar à base de dados. Tente novamente em alguns instantes.",
+            "message": "Puxa, tive um problema para me conectar à base de dados. Tente novamente.",
             "articles": []
         }
         return Response(response_data, status=status.HTTP_503_SERVICE_UNAVAILABLE)
@@ -62,17 +73,25 @@ def search_articles_view(request):
     if len(articles) > 0:
         response_data = {
             "success": True,
-            "message": f"Encontrei {len(articles)} artigos excelentes para você! Que tal explorar outro tópico?",
+            # MUDANÇA: Mensagem de sucesso melhorada
+            "message": f"Aqui estão {len(articles)} artigos para você! Encontrei mais alguns, se quiser carregar.",
             "articles": articles
         }
     else:
-        response_data = {
-            "success": True,
-            "message": "Puxa, não encontrei artigos com esses termos. Que tal tentarmos uma busca diferente?",
-            "articles": []
-        }
+        # Se for uma paginação (offset > 0) e não vier nada, a mensagem é diferente
+        if validated_data['offset'] > 0:
+            response_data = {
+                "success": True,
+                "message": "Chegamos ao fim! Não encontrei mais artigos sobre esse tema.",
+                "articles": []
+            }
+        else:
+             response_data = {
+                "success": True,
+                "message": "Puxa, não encontrei artigos com esses filtros. Que tal tentarmos uma busca diferente?",
+                "articles": []
+            }
     return Response(response_data, status=status.HTTP_200_OK)
-
 
 # --- FUNÇÃO HELPER (para não repetir código) ---
 def _handle_summarize_response(result):

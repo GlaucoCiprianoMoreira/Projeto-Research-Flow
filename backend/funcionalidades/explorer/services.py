@@ -4,6 +4,7 @@ import requests
 import google.generativeai as genai
 from dotenv import load_dotenv
 from pathlib import Path # Importe a biblioteca Path
+from datetime import datetime
 
 env_path = Path(__file__).resolve().parent.parent.parent / '.env'
 load_dotenv(dotenv_path=env_path)
@@ -51,11 +52,12 @@ def extract_keywords_with_gemini(natural_language_query: str) -> str:
         print(f"Erro ao processar resposta do Gemini: {e}. Usando fallback.")
         return natural_language_query # Fallback para a query original
 
-def search_articles_from_api(query: str):
+def search_articles_from_api(query: str, sort_by: str, year_from: int = None, year_to: int = None, offset: int = 0, is_open_access: bool = False):
     """
-    Busca artigos, ordena por relevância (citações) e retorna os 5 melhores.
+    Busca artigos com filtros avançados de ordenação, ano, open access e paginação.
     """
-    print(f"Buscando artigos REAIS no Semantic Scholar para: '{query}'")
+    print(f"--- INICIANDO BUSCA AVANÇADA ---")
+    print(f"Query: '{query}', Sort: '{sort_by}', Ano: {year_from}-{year_to}, Offset: {offset}, OpenAccess: {is_open_access}")
     
     base_url = "https://api.semanticscholar.org/graph/v1/paper/search"
     api_key = os.getenv("SEMANTIC_API_KEY")
@@ -63,11 +65,41 @@ def search_articles_from_api(query: str):
         return {"error": "Chave da API do Semantic Scholar não configurada."}
 
     headers = { 'x-api-key': api_key }
+    
     params = {
         'query': query,
-        'limit': 25, # Buscamos 25 para ter um bom "pool" para selecionar os melhores
+        'limit': 25, # O limite de resultados por página
+        'offset': offset, # O ponto de início da paginação
         'fields': 'title,authors,year,url,abstract,citationCount,journal'
     }
+
+    # --- LÓGICA DE FILTROS DINÂMICOS ---
+
+    # 1. Ordenação
+    if sort_by == 'recency':
+        params['sort'] = 'publicationDate:desc'
+        print("Filtro aplicado: Mais Recentes")
+    elif sort_by == 'relevance':
+        params['sort'] = 'citationCount:desc'
+        print("Filtro aplicado: Mais Relevantes (Citações)")
+    # Se sort_by == 'default', não adicionamos o parâmetro 'sort'
+    # e deixamos o Semantic Scholar usar seu algoritmo padrão.
+    else:
+        print("Filtro aplicado: Relevância da IA (Padrão)")
+        
+    # 2. Ano
+    current_year = datetime.now().year
+    start_year = year_from if year_from and year_from > 1900 else 1900
+    end_year = year_to if year_to and year_to <= current_year else current_year
+    
+    if start_year != 1900 or end_year != current_year:
+        params['year'] = f"{start_year}-{end_year}"
+        print(f"Filtro de ano aplicado: {params['year']}")
+
+    # 3. Open Access
+    if is_open_access:
+        params['openAccessPdf'] = 'true'
+        print("Filtro aplicado: Apenas Open Access")
 
     try:
         response = requests.get(base_url, params=params, headers=headers, timeout=15)
@@ -81,10 +113,9 @@ def search_articles_from_api(query: str):
 
         if articles_data:
             for item in articles_data:
-                # Mantemos o filtro para garantir que o artigo tenha conteúdo analisável
                 if not item.get('abstract'):
                     continue
-
+                
                 journal_info = item.get('journal')
                 journal_name = journal_info.get('name', 'N/A') if journal_info else 'N/A'
                 results.append({
@@ -97,13 +128,10 @@ def search_articles_from_api(query: str):
                     'journal': journal_name
                 })
         
-        # A MÁGICA DA SELEÇÃO: Ordena a lista de resultados pelo número de citações (do maior para o menor)
-        sorted_results = sorted(results, key=lambda x: x['citationCount'], reverse=True)
+        print(f"Total de artigos com resumo: {len(results)}. Retornando TODOS.")
         
-        print(f"Total de artigos com resumo: {len(results)}. Retornando os 5 mais citados.")
-        
-        # Retorna apenas os 5 melhores artigos
-        return sorted_results[:5]
+        # Retorna todos os resultados encontrados (até o limite de 25)
+        return results
 
     except requests.exceptions.RequestException as e:
         print(f"Erro ao chamar a API do Semantic Scholar: {e}")

@@ -2,16 +2,43 @@ from rest_framework import serializers
 
 # --- Serializers da Busca ---
 
+# Em api/serializers.py
+
 class SearchQuerySerializer(serializers.Serializer):
     """
     Define o formato esperado para a query de busca.
-    Ex: {"query": "inteligencia artificial"}
     """
     query = serializers.CharField(
         required=True,
         help_text="A pergunta ou termos de busca em linguagem natural."
     )
-
+    sort_by = serializers.CharField(
+        required=False, 
+        # MUDANÇA: O novo padrão é 'default' (Relevância da IA)
+        default="default", 
+        help_text="Critério de ordenação: 'default' (IA), 'relevance' (citações) ou 'recency' (data)."
+    )
+    year_from = serializers.IntegerField(
+        required=False, 
+        allow_null=True, 
+        help_text="Ano inicial do filtro."
+    )
+    year_to = serializers.IntegerField(
+        required=False, 
+        allow_null=True, 
+        help_text="Ano final do filtro."
+    )
+    # --- NOVOS CAMPOS ADICIONADOS ---
+    offset = serializers.IntegerField(
+        required=False, 
+        default=0,
+        help_text="Índice inicial para paginação (ex: 0, 25, 50...)."
+    )
+    is_open_access = serializers.BooleanField(
+        required=False, 
+        default=False,
+        help_text="Filtrar apenas por artigos com PDF gratuito."
+    )
 class ArticleSerializer(serializers.Serializer):
     """
     Define a estrutura de um único artigo na lista de resultados.

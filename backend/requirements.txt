@@ -8,3 +8,4 @@ PyPDF2
 pydantic
 drf_spectacular
 pylatex
+django-cors-headers

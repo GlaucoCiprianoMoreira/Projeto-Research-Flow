@@ -1,119 +1,104 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+// MUDANÇA: Imports atualizados
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Pencil, Download, Trash2, Calendar } from "lucide-react"
-
-const mockProjects = [
-  {
-    id: 1,
-    name: "Inteligência Artificial na Educação",
-    type: "Análise",
-    date: "2024-01-15",
-    status: "Concluído",
-  },
-  {
-    id: 2,
-    name: "Machine Learning em Saúde",
-    type: "Exploração",
-    date: "2024-01-14",
-    status: "Em andamento",
-  },
-  {
-    id: 3,
-    name: "Redes Neurais Convolucionais",
-    type: "Escrita",
-    date: "2024-01-13",
-    status: "Concluído",
-  },
-  {
-    id: 4,
-    name: "Processamento de Linguagem Natural",
-    type: "Análise",
-    date: "2024-01-12",
-    status: "Concluído",
-  },
-]
+import { Trash2, Calendar, Bookmark, Brain } from "lucide-react"
+import { useRouter } from "next/navigation" // Para o redirecionamento
 
 export default function ProjetosPage() {
-  const [projects, setProjects] = useState(mockProjects)
-  const [filterType, setFilterType] = useState("all")
+  const [savedArticles, setSavedArticles] = useState([])
+  const router = useRouter()
 
-  const filteredProjects = filterType === "all" ? projects : projects.filter((p) => p.type.toLowerCase() === filterType)
+  // --- Carrega os artigos salvos do localStorage ---
+  useEffect(() => {
+    const savedItems = localStorage.getItem("researchFlowFavorites")
+    const favorites = savedItems ? JSON.parse(savedItems) : []
+    setSavedArticles(favorites)
+  }, [])
+
+  // --- Função para deletar um favorito ---
+  const handleDelete = (urlToDelete) => {
+    // Filtra o artigo para fora da lista
+    const newFavorites = savedArticles.filter((item) => item.url !== urlToDelete)
+    // Atualiza o estado
+    setSavedArticles(newFavorites)
+    // Atualiza o localStorage
+    localStorage.setItem("researchFlowFavorites", JSON.stringify(newFavorites))
+  }
+
+  // --- Função para analisar (Etapa 3 do seu plano) ---
+  const handleAnalyze = (articleUrl) => {
+    // Redireciona para /analisar e passa a URL como um parâmetro de busca
+    router.push(`/analisar?url=${encodeURIComponent(articleUrl)}`)
+  }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-6"> {/* Adicionado um padding padrão */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Seus Projetos</h1>
-        <p className="text-muted-foreground">Gerencie todos os seus projetos de pesquisa</p>
+        <h1 className="text-3xl font-bold tracking-tight">Meus Artigos Salvos</h1>
+        <p className="text-muted-foreground">
+          Gerencie e analise os artigos que você favoritou.
+        </p>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Filtros</CardTitle>
-          <CardDescription>Filtre seus projetos por tipo e data</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="space-y-2">
-              <Label htmlFor="type">Tipo de Operação</Label>
-              <Select value={filterType} onValueChange={setFilterType}>
-                <SelectTrigger id="type">
-                  <SelectValue placeholder="Selecione o tipo" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">Todos</SelectItem>
-                  <SelectItem value="exploração">Exploração</SelectItem>
-                  <SelectItem value="análise">Análise</SelectItem>
-                  <SelectItem value="escrita">Escrita</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="date">Intervalo de Datas</Label>
-              <Input id="date" type="date" />
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Projetos ({filteredProjects.length})</h2>
-        {filteredProjects.map((project) => (
-          <Card key={project.id}>
+        <h2 className="text-xl font-semibold">
+          Artigos Salvos ({savedArticles.length})
+        </h2>
+        
+        {savedArticles.length === 0 && (
+            <Card className="text-center p-8">
+                <Bookmark className="mx-auto h-12 w-12 text-gray-400" />
+                <h3 className="mt-4 text-lg font-semibold">Nenhum artigo salvo</h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                    Vá para a página "Explorar Artigos" e clique no ícone "Salvar" 
+                    para adicionar seus artigos favoritos aqui.
+                </p>
+            </Card>
+        )}
+
+        {/* Mapeia os artigos salvos */}
+        {savedArticles.map((article) => (
+          <Card key={article.url}>
             <CardHeader>
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <CardTitle className="text-lg">{project.name}</CardTitle>
-                  <CardDescription className="mt-2 flex items-center gap-4">
-                    <Badge variant="secondary">{project.type}</Badge>
+                  <CardTitle className="text-lg text-blue-600 hover:underline dark:text-blue-400">
+                    <a href={article.url} target="_blank" rel="noopener noreferrer">
+                        {article.title}
+                    </a>
+                  </CardTitle>
+                  <CardDescription className="mt-2 flex flex-wrap items-center gap-4">
+                    <Badge variant="secondary">
+                      Citações: {article.citationCount}
+                    </Badge>
                     <span className="flex items-center gap-1 text-xs">
                       <Calendar className="h-3 w-3" />
-                      {new Date(project.date).toLocaleDateString("pt-BR")}
+                      {article.year}
                     </span>
-                    <Badge variant={project.status === "Concluído" ? "default" : "outline"}>{project.status}</Badge>
                   </CardDescription>
+                  <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    {article.authors.join(", ")}
+                  </p>
                 </div>
               </div>
             </CardHeader>
             <CardContent>
               <div className="flex gap-2">
-                <Button variant="outline" size="sm">
-                  <Pencil className="mr-2 h-4 w-4" />
-                  Renomear
+                <Button onClick={() => handleAnalyze(article.url)} size="sm">
+                  <Brain className="mr-2 h-4 w-4" />
+                  Perguntar à IA (Analisar)
                 </Button>
-                <Button variant="outline" size="sm">
-                  <Download className="mr-2 h-4 w-4" />
-                  Baixar
-                </Button>
-                <Button variant="outline" size="sm">
+                <Button
+                  onClick={() => handleDelete(article.url)}
+                  variant="outline"
+                  size="sm"
+                >
                   <Trash2 className="mr-2 h-4 w-4" />
-                  Excluir
+                  Remover
                 </Button>
               </div>
             </CardContent>
