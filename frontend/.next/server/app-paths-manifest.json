@@ -1,8 +1,0 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/(auth)/login/page": "app/(auth)/login/page.js",
-  "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js",
-  "/(dashboard)/explorar/page": "app/(dashboard)/explorar/page.js",
-  "/(dashboard)/projetos/page": "app/(dashboard)/projetos/page.js",
-  "/(dashboard)/chat/page": "app/(dashboard)/chat/page.js"
-}
