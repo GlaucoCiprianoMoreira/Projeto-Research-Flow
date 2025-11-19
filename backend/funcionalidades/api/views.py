@@ -201,19 +201,22 @@ def chat_document_view(request):
     if not serializer.is_valid():
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    context = serializer.validated_data['context']
-    messages = serializer.validated_data['messages']
+    validated_data = serializer.validated_data
     
-    # Converte a lista de objetos OrderedDict (do serializer) para lista de dicts simples
-    messages_list = [{"role": m['role'], "content": m['content']} for m in messages]
+    context = validated_data['context']
+    messages = validated_data['messages']
+    
+    # CORREÇÃO À PROVA DE FALHAS: Converte cada item para um dicionário Python nativo
+    messages_list = [
+        {"role": str(m['role']), "content": str(m['content'])} 
+        for m in messages
+    ]
     
     result = chat_with_context(context, messages_list)
     
     if "error" in result:
         return Response(result, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     return Response(result)
-
-
 # --- ROTA DO FORMATADOR ---
 @extend_schema(
     summary="Formata Texto",

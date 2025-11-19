@@ -249,7 +249,7 @@ export default function ExplorarPage() {
     }
 
     try {
-      const response = await fetch("http://192.168.0.6:8000/api/search/", { 
+      const response = await fetch("http://10.134.0.71:8000/api/search/", { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestBody),

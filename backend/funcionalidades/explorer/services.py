@@ -68,7 +68,7 @@ def search_articles_from_api(query: str, sort_by: str, year_from: int = None, ye
     
     params = {
         'query': query,
-        'limit': 25, # O limite de resultados por página
+        'limit': 20, # O limite de resultados por página
         'offset': offset, # O ponto de início da paginação
         'fields': 'title,authors,year,url,abstract,citationCount,journal'
     }

@@ -36,6 +36,21 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(dashboard)/chat/page.js"
     ],
+    "/(dashboard)/escrever/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(dashboard)/escrever/page.js"
+    ],
+    "/(dashboard)/projetos/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(dashboard)/projetos/page.js"
+    ],
+    "/(dashboard)/analisar/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(dashboard)/analisar/page.js"
+    ],
     "/(dashboard)/explorar/loading": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -46,30 +61,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(dashboard)/explorar/page.js"
     ],
-    "/(dashboard)/projetos/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(dashboard)/projetos/page.js"
-    ],
-    "/(dashboard)/escrever/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(dashboard)/escrever/page.js"
-    ],
-    "/(dashboard)/analisar/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(dashboard)/analisar/page.js"
-    ],
-    "/(dashboard)/perfil/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(dashboard)/perfil/page.js"
-    ],
-    "/(auth)/cadastro/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(auth)/cadastro/page.js"
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }

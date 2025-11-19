@@ -235,16 +235,14 @@ def extract_text_from_file_obj(file_obj) -> dict:
 
 def chat_with_context(context_text: str, messages: List[Dict[str, str]]) -> dict:
     limit_chars = 100000
+    
     prompt_system = f"""
     Você é um assistente acadêmico especialista.
     Use o seguinte texto extraído de um artigo científico como sua única fonte de verdade para responder à pergunta do usuário.
     
-    --- INÍCIO DO CONTEXTO ---
-    {context_text[:50000]}
-    --- FIM DO CONTEXTO ---
-
-    Histórico da conversa:
-    {json.dumps(messages, ensure_ascii=False)}
+    --- INÍCIO DO ARTIGO ---
+    {context_text[:limit_chars]}
+    --- FIM DO ARTIGO ---
 
     Instruções:
     1. Responda de forma direta, educada e técnica.
@@ -252,12 +250,24 @@ def chat_with_context(context_text: str, messages: List[Dict[str, str]]) -> dict
     3. Use formatação Markdown para deixar a resposta clara.
     """
     try:
-        model = genai.GenerativeModel(MODEL_NAME)
-        last_user_msg = messages[-1]['content'] if messages else "Resuma este texto."
-        full_prompt = f"{prompt_system}\n\nUsuário: {last_user_msg}\nResposta:"
+        model = genai.GenerativeModel("gemini-2.0-flash") # Usando um modelo estável
+        
+        # 1. Constrói o histórico da conversa para dar memória à IA
+        chat_history_str = ""
+        for msg in messages:
+             # Acessa com get() para evitar erros
+             role = "Usuário" if msg.get('role') == 'user' else "Assistente"
+             chat_history_str += f"{role}: {msg.get('content')}\n"
+        
+        # 2. Pega a última pergunta do usuário de forma segura
+        last_user_msg = messages[-1].get('content') if messages and messages[-1].get('role') == 'user' else "Qual é o principal tema deste documento?"
+        
+        full_prompt = f"{prompt_system}\n\nHistórico da Conversa:\n{chat_history_str}\n\nUsuário: {last_user_msg}\nResposta:"
+        
         response = model.generate_content(full_prompt)
         return {"response": response.text}
     except Exception as e:
+        # Retorna o erro exato para debugging
         return {"error": str(e)}
 
 def summarize_article_with_gemini(article_text: str, natural_language_query: Optional[str] = None) -> dict:
