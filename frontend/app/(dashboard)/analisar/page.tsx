@@ -1,4 +1,4 @@
-"use client"
+	"use client";
 
 import type React from "react"
 import { useState } from "react"
@@ -20,6 +20,7 @@ interface AnalysisResponse {
 
 export default function AnalisarPage() {
   const [articleUrl, setArticleUrl] = useState("")
+  const [userQuery, setUserQuery] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [analysis, setAnalysis] = useState<AnalysisResponse | null>(null)
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -175,6 +176,19 @@ export default function AnalisarPage() {
                   className="font-mono text-sm"
                 />
               </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Consulta do Usuário
+                </label>
+
+                <textarea
+                    value={userQuery}
+                    onChange={(e) => setUserQuery(e.target.value)}
+                    placeholder="Descreva o que você quer que o sistema faça (ex.: 'resuma o artigo focando nos métodos')"
+                    className="w-full border border-gray-300 rounded-lg p-3 h-32 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+
               <Button onClick={handleUrlAnalysis} disabled={isAnalyzing || !articleUrl.trim()} className="w-full">
                 {isAnalyzing ? (
                   <>
