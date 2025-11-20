@@ -1,5 +1,6 @@
 "use client"
 
+
 import type React from "react"
 
 import { useState } from "react"
@@ -89,9 +90,27 @@ export default function EscreverPage() {
                   <SelectItem value="apa">Formatação APA</SelectItem>
                   <SelectItem value="mla">Formatação MLA</SelectItem>
                   <SelectItem value="chicago">Formatação Chicago</SelectItem>
+                  <SelectItem value="chicago">Formatação Vancouver</SelectItem>
+                  <SelectItem value="chicago">Formatação Springer LNCS</SelectItem>
                 </SelectContent>
               </Select>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Section 2: Direct Text Input */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Texto direto</CardTitle>
+            <CardDescription>Digite ou cole seu texto aqui para formatação</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Textarea
+              placeholder="Digite ou cole seu texto aqui..."
+              value={textInput}
+              onChange={(e) => setTextInput(e.target.value)}
+              className="min-h-[300px] resize-none"
+            />
           </CardContent>
         </Card>
 
