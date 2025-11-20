@@ -273,6 +273,72 @@ query="Explique em português os métodos e resultados, com números."
 
 ---
 
+# ✍️ Writer — Geração e Formatação LaTeX
+
+> Objetivo: **Automatizar a formatação** de artigos científicos para um estilo de conferência específico (ex: IEEE, ACM, SBC), convertendo o conteúdo fornecido pelo usuário (PDF ou TXT) em um documento **LaTeX (.tex)** e, opcionalmente, gerando um **PDF** final.
+
+---
+
+## 📂 Visão geral
+
+O **Writer** recebe um arquivo (`.pdf` ou `.txt`) contendo o texto bruto de um artigo e um **estilo de formatação** de conferência (ex: `"IEEE"`, `"ACM"`, `"SBC"`). Ele utiliza a **IA do Gemini** para aplicar rigorosamente as regras do estilo solicitado e formata o texto no padrão **LaTeX**.
+
+**Saída principal:**
+* Um arquivo `.tex` contendo o artigo formatado em LaTeX.
+* Um arquivo `.pdf` (gerado a partir do `.tex`), pronto para submissão (requer compilador LaTeX).
+
+---
+
+## 🚦 Fluxo da funcionalidade (passo a passo)
+
+1. Cliente faz requisição `POST` para a API, enviando um arquivo (`.pdf` ou `.txt`), o nome de um arquivo (para salvar) e o `style` de formatação desejado.
+2. A view `api/views.py` recebe o *FormData*.
+3. O serviço `writer.services.extract_text_from_file` extrai o conteúdo do arquivo (usando `PyPDF2` para PDF ou leitura direta para TXT).
+4. O serviço `writer.services.decide_fewshot` faz uma chamada ao **Gemini (Flash)** em tempo real para gerar uma descrição do estilo e um **exemplo de formatação em LaTeX** (*few-shot*) para garantir a aderência ao padrão.
+5. O serviço `writer.services.format_text_with_gemini` monta o *prompt* final, incluindo o texto extraído, o estilo e o *few-shot* gerado. Ele chama o **Gemini (Pro)** para realizar a conversão rigorosa do texto em código LaTeX.
+6. A resposta em LaTeX (`str`) é salva em um arquivo `.tex` local pelo `writer.services.convert_text_to_latex_file`.
+7. O arquivo `.tex` é, então, compilado para **PDF** usando `pylatex` (`writer.services.convert_tex_file_to_pdf`).
+8. A API retorna uma resposta de sucesso/falha e os caminhos/links para os arquivos gerados.
+
+---
+
+## 🧩 Principais componentes (arquivos e responsabilidades)
+
+* **writer/services.py**
+    * `decide_fewshot(style)`: Gera a descrição do estilo e o exemplo de formatação LaTeX (*few-shot*) usando **Gemini Flash**.
+    * `extract_pdf_text_from_file / extract_txt_text_from_file / extract_text_from_file`: Funções para extrair texto de PDF (via `PyPDF2`) ou TXT.
+    * `format_text_with_gemini(input_text, style, filename)`: Orquestra o *prompt engineering* e chama o **Gemini Pro** para a conversão final em LaTeX.
+    * `convert_text_to_latex_file(response, filename)`: Salva o código LaTeX em um arquivo `.tex`.
+    * `convert_tex_file_to_pdf(tex_file_path)`: Compila o `.tex` gerado para um arquivo `.pdf` (requer ambiente LaTeX).
+
+* **api/views.py**
+    * `format_text_view(request)`: Ponto de entrada da API para o Writer, aceitando *FormData* com o arquivo e o estilo.
+
+* **api/serializers.py**
+    * `FormatTextInputSerializer`: Valida o *FormData* de entrada, incluindo os campos `file`, `style` e `filename`.
+
+---
+
+## ✏️ Prompt Engineering e IA
+
+* **Modelo de Geração de Estilo:** `gemini-2.0-flash` (para a criação rápida e descritiva do *few-shot*).
+* **Modelo de Formatação Final:** `gemini-2.5-pro` (escolhido pela sua maior capacidade de seguir instruções complexas e gerar código técnico rigoroso como o LaTeX).
+* **Regras Chave:** O *prompt* exige a **rigorosidade** na sintaxe LaTeX, a **não criação de conteúdo novo** e que a saída seja **APENAS** o código LaTeX, sem explicações ou ruído.
+
+---
+
+## ✅ Exemplo rápido de uso (requests)
+
+**FormData (upload):**
+```
+POST /api/writer/format Content-Type: multipart/form-data
+
+file=@meu_artigo.pdf style="IEEE Conference Template" filename="Artigo_IEEE_IA_no_Futebol"
+```
+
+**Resultado (Arquivos Locais):**
+Gerado na pasta ./arquivos/
+Artigo_IEEE_IA_no_Futebol.tex Artigo_IEEE_IA_no_Futebol.pdf
 
 ## ⚙️ Configuração de Ambiente
 
